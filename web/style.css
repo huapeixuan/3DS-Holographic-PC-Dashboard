@@ -1,0 +1,143 @@
+/* ========================================
+   3D 全息仪表盘 - 赛博朋克风格样式
+   ======================================== */
+
+:root {
+    /* 赛博朋克配色 */
+    --cyber-bg: #0a0a12;
+    --cyber-grid: #1a1a2e;
+    --cyber-cyan: #00f5ff;
+    --cyber-magenta: #ff00aa;
+    --cyber-purple: #9d4edd;
+    --cyber-green: #00ff88;
+    --cyber-orange: #ff6b35;
+    --cyber-text: #e0e0ff;
+    --cyber-glow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'SF Mono', 'Menlo', 'Monaco', monospace;
+    background: var(--cyber-bg);
+    color: var(--cyber-text);
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+/* 背景网格效果 */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, var(--cyber-grid) 1px, transparent 1px),
+        linear-gradient(var(--cyber-grid) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* 渐变遮罩 */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 30%, var(--cyber-bg) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* 顶部状态栏 - 升级为中心看板 */
+#status-bar {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 40px 60px;
+    background: rgba(10, 10, 18, 0.9);
+    border: 2px solid var(--cyber-cyan);
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 245, 255, 0.3);
+    backdrop-filter: blur(20px);
+    z-index: 100;
+}
+
+#connection-status {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#connection-status .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--cyber-orange);
+    animation: pulse 1.5s infinite;
+}
+
+#connection-status.connected .dot {
+    background: var(--cyber-green);
+    animation: none;
+}
+
+#connection-status.error .dot {
+    background: var(--cyber-magenta);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+#data-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    font-size: 24px;
+    color: var(--cyber-cyan);
+    text-shadow: 0 0 15px rgba(0, 245, 255, 0.6);
+}
+
+#data-info span {
+    padding: 10px 20px;
+    background: rgba(0, 245, 255, 0.05);
+    border-radius: 4px;
+    border-left: 3px solid var(--cyber-cyan);
+}
+
+
+
+/* 响应式 */
+@media (max-width: 768px) {
+    #status-bar {
+        width: 90%;
+        padding: 20px;
+        gap: 20px;
+    }
+    
+    #data-info {
+        gap: 16px;
+        font-size: 18px;
+    }
+}

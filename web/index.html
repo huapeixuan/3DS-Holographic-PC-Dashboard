@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D 全息仪表盘</title>
+    <meta name="description" content="裸眼 3D 风格的 PC 系统监控仪表盘">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 状态指示器 -->
+    <div id="status-bar">
+        <div id="connection-status">
+            <span class="dot"></span>
+            <span class="text">连接中...</span>
+        </div>
+        <div id="data-info">
+            <span id="cpu-text">CPU: ---%</span>
+            <span id="mem-text">内存: ---%</span>
+            <span id="temp-text">温度: ---°C</span>
+            <span id="fan-text">风扇: ---</span>
+            <span id="power-text">负荷: ---</span>
+        </div>
+    </div>
+
+    <!-- 主逻辑 -->
+    <script src="main.js"></script>
+</body>
+</html>

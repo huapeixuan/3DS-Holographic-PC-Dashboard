@@ -1,0 +1,21 @@
+[package]
+name = "holographic-monitor"
+version = "0.1.0"
+edition = "2021"
+description = "3D 全息仪表盘 - PC 系统监控服务端"
+
+[dependencies]
+# 系统信息采集
+sysinfo = "0.31"
+libmacchina = "8.1"
+
+# 异步运行时
+tokio = { version = "1", features = ["full"] }
+
+# WebSocket
+tokio-tungstenite = "0.24"
+futures-util = "0.3"
+
+# JSON 序列化
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
