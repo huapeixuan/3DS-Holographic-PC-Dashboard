@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: client-3ds
-          path: 3ds/*.3dsx
+          path: 3ds/build/*.3dsx
 
   release:
     name: Create GitHub Release
@@ -81,7 +81,7 @@ jobs:
           mkdir assets
           cp server-macos/holographic-monitor-macos.zip assets/
           cp server-windows/holographic-monitor-windows.zip assets/
-          cp client-3ds/build/*.3dsx assets/
+          cp client-3ds/*.3dsx assets/
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
